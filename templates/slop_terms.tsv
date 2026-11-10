@@ -1,0 +1,54 @@
+# 표현	대신	근거
+# html_gate.py 가 읽는다. 한 줄 = 금지 표현 하나(부분 일치). 새 지적이 나오면 그 자리에서 한 줄 더한다.
+# 「대신」이 비어 있으면 빼거나 숫자로 바꾼다.
+구조적	(빼기 · 숫자로)	11-08 FuelEU HTML 1판 — 분석 조어
+사실상	(빼기)	11-08 FuelEU HTML 1판
+핵심	(빼기 · 무엇인지 직접)	11-08 FuelEU HTML 1판
+행정 부담	처리 기간 · 일수	11-08 FuelEU HTML 1판
+일원화	SSOT · 한 곳	11-08 FuelEU HTML 1판
+효과적		일반 AI 문체
+체계적		일반 AI 문체
+종합적		일반 AI 문체
+선제적		일반 AI 문체
+다양한		일반 AI 문체
+원활		일반 AI 문체
+극대화		일반 AI 문체
+고도화		일반 AI 문체
+내재화		일반 AI 문체
+패러다임		일반 AI 문체
+이를 통해		일반 AI 문체
+나아가		일반 AI 문체
+결론적으로		일반 AI 문체
+요약하면		일반 AI 문체
+주목할		일반 AI 문체
+중요한 점		일반 AI 문체
+살펴보		일반 AI 문체
+라는 점		일반 AI 문체
+의 중요성		일반 AI 문체
+계약 경로	Schedule P 방법론	write-in-users-voice (09-15)
+병기	함께 기재	write-in-users-voice (09-15)
+고정 편차	In-service BF0 vs Model Test Gap	write-in-users-voice (09-15)
+구조적 차이	In-service BF0 vs Model Test Gap	write-in-users-voice (09-15)
+계약값	TCP 값	write-in-users-voice (09-15)
+계약 대비	Table 대비	write-in-users-voice (09-15)
+선대	Fleet	write-in-users-voice (09-15)
+미결	확인 필요	write-in-users-voice (09-15)
+부적절	지양	write-in-users-voice (09-15)
+속력계	Speed Log	write-in-users-voice (09-15)
+토크계	Torque meter	write-in-users-voice (09-15)
+유량계	Flowmeter · Gas Flow meter	write-in-users-voice · domain-terms (10-21)
+적합 약함	Fitting 신뢰도 낮음	write-in-users-voice (09-15)
+청소 효과	UWC + PP 효과	domain-terms (09-29)
+성능 저하	성능 악화	domain-terms (09-29)
+분위기	협의 동향	write-in-users-voice (11-06)
+계산서	FOC Table Calculation Sheet	domain-terms (11-05)
+노온	Noon	noon-report-term
+발전 연료	G/E 소모량	domain-terms (10-26)
+전기 부하	Electric load	domain-terms (10-26)
+추진동력	Propulsion Power	domain-terms (10-26)
+압축기 전력	Compressor Power	domain-terms (10-26)
+자연 변동	(Noon Report) 산포	domain-terms (10-22)
+경향	추세	domain-terms (10-22)
+기상 보정	Weather Correction	domain-terms (10-22)
+표류	Drifting	domain-terms (10-21)
+당사	우리회사 (사내 문서)	write-in-users-voice (10-28)

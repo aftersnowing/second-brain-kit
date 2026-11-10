@@ -1,0 +1,35 @@
+# second brain — 원 시스템이 쓰는 외부 패키지 (2026-11-10, Python 3.12.3 · WSL2 Ubuntu 에서 확인한 버전)
+# 표준 라이브러리 밖에서 import 하는 것만. 서버(http.server) · DB(sqlite3 FTS5) · 잠금(fcntl)은 표준 라이브러리.
+
+# 수집 · 초안 저장 — 로그인된 브라우저(CDP)에 붙는다. 설치 뒤 `playwright install chromium`
+playwright==1.58.0
+lxml==6.0.2                 # 메일 HTML → 텍스트 · 인용 잘라내기
+cryptography==46.0.5        # 자격증명 암호화 보관(scrypt + Fernet)
+
+# 설정 · 화면
+PyYAML==6.0.2               # 용어집 · 담당 범위
+Markdown==3.10.2            # 위키 페이지 렌더
+
+# 의미 검색 — 로컬 임베딩(외부 API 없음). CPU 판 torch 로 충분
+torch==2.10.0
+transformers==5.2.0
+numpy==2.4.2
+
+# 첨부 본문화
+PyMuPDF==1.27.2.2           # PDF (import 이름 fitz)
+openpyxl==3.1.5             # xlsx
+xlrd==2.0.2                 # xls
+python-docx==1.2.0          # docx
+python-pptx==1.0.2          # pptx
+
+# 시험
+pytest==9.0.2
+
+# 선택 — 스캔 PDF OCR(상시 배후 실행은 폐기, 필요할 때 한 건씩)
+# paddleocr==3.4.0
+# opencv-python-headless==4.11.0.86
+
+# 패키지 밖에서 필요한 것
+# - AI 코딩 도구 CLI(현 구현: Claude Code, `claude -p` 비대화형 호출) — 카드 · 요약 · 질문 창 · 관점
+# - systemd 사용자 단위(`loginctl enable-linger <user>` 로 로그아웃 중에도 타이머가 돈다)
+# - rsync · git

@@ -1,0 +1,52 @@
+/* second brain 화면 기본 틀 — 원 시스템 sb_shell.py 의 CSS 그대로 (2026-11-10).
+   색은 토큰(:root)으로만 쓴다 · 밝은/어두운 테마 둘 다 · 상단 메뉴(nav.top) · 카드(.card) · 칩(.chip) · 표시(.tag/.pill) · 위키 본문(.doc) · 2단 배치(.layout).
+   판정 · 권고 배지는 만들지 않는다 — .tag 는 상태(새 · 열림 · 진행 · 완료 · 초안) 표시용. */
+:root{--ink:#12181f;--ink-2:#3d4a58;--ink-3:#6b7987;--line:#dde3ea;--line-2:#eef2f6;--bg:#f7f9fb;--panel:#fff;
+--accent:#0e6e78;--accent-2:#0a545c;--accent-bg:#e4f2f3;--warn:#a2560a;--warn-bg:#fdf1e3;--danger:#a3232b;--danger-bg:#fdecec;
+--ok:#1d6b3f;--ok-bg:#e8f4ec;--radius:7px;--mono:ui-monospace,"SFMono-Regular","JetBrains Mono",Menlo,Consolas,monospace;
+--sans:-apple-system,BlinkMacSystemFont,"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--ink:#e6ecf2;--ink-2:#aab7c4;--ink-3:#7d8b99;--line:#28323d;--line-2:#1d252e;
+--bg:#10151b;--panel:#161d25;--accent:#4fc3ce;--accent-2:#7ad8e2;--accent-bg:#12333a;--warn:#e8a761;--warn-bg:#33240f;--danger:#f0868c;
+--danger-bg:#3a1518;--ok:#79c894;--ok-bg:#14301f}}
+:root[data-theme=dark]{--ink:#e6ecf2;--ink-2:#aab7c4;--ink-3:#7d8b99;--line:#28323d;--line-2:#1d252e;--bg:#10151b;--panel:#161d25;
+--accent:#4fc3ce;--accent-2:#7ad8e2;--accent-bg:#12333a;--warn:#e8a761;--warn-bg:#33240f;--danger:#f0868c;--danger-bg:#3a1518;--ok:#79c894;--ok-bg:#14301f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.6}
+a{color:var(--accent)}code,.mono{font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+nav.top{display:flex;align-items:center;gap:4px;padding:0 16px;height:46px;background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+nav.top .brand{font-weight:800;margin-right:14px}
+nav.top a.m{padding:5px 13px;border-radius:999px;text-decoration:none;color:var(--ink-2);font-size:13.5px}
+nav.top a.m.on{background:var(--accent);color:#fff}nav.top a.m:hover:not(.on){background:var(--accent-bg);color:var(--accent)}
+nav.top .r{margin-left:auto;display:flex;gap:6px;align-items:center}
+button.icon,a.icon{border:1px solid var(--line);background:var(--panel);color:var(--ink-2);
+border-radius:var(--radius);padding:3px 9px;cursor:pointer;font:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:14px;overflow:hidden}
+.card>.hd{display:flex;align-items:center;gap:10px;padding:8px 14px;background:var(--accent-bg);color:var(--accent);font-weight:700;font-size:13px}
+.card>.hd .meta{font-weight:400;color:var(--ink-3);font-size:12px}.card>.bd{padding:8px 16px 14px}
+.pill{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:2px 11px;font-size:12px;border:1px solid var(--line);background:var(--line-2);color:var(--ink-2);white-space:nowrap;text-decoration:none}
+.pill.ok{background:var(--ok-bg);color:var(--ok);border-color:transparent}.pill.warn{background:var(--warn-bg);color:var(--warn);border-color:transparent}
+.pill.danger{background:var(--danger-bg);color:var(--danger);border-color:transparent}.pill.accent{background:var(--accent-bg);color:var(--accent);border-color:transparent}
+.chip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 9px;font-size:12px;color:var(--ink-2);margin:2px 4px 2px 0;text-decoration:none;background:var(--panel);cursor:pointer;font-family:inherit}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}a.chip.reg{border-color:var(--accent);color:var(--accent)}a.chip.wiki{border-color:var(--ok);color:var(--ok)}a.chip.tcp{border-color:var(--warn);color:var(--warn)}
+.tag{display:inline-block;border-radius:4px;padding:0 6px;font-size:11px;font-weight:700;white-space:nowrap}
+.tag.new{background:var(--accent);color:#fff}.tag.hi,.tag.open{background:var(--danger-bg);color:var(--danger)}.tag.mid,.tag.prog{background:var(--warn-bg);color:var(--warn)}
+.tag.lo{background:var(--line-2);color:var(--ink-3)}.tag.done{background:var(--ok-bg);color:var(--ok)}.tag.draft{background:var(--accent-bg);color:var(--accent)}
+.doc{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 26px}
+.doc h1{font-size:20px;margin:0 0 6px}.doc h2{font-size:16px;margin:22px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--line-2)}.doc h3{font-size:14.5px;margin:16px 0 6px}
+.doc table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0}.doc th,.doc td{border:1px solid var(--line);padding:5px 8px;vertical-align:top;text-align:left}
+.doc th{background:var(--line-2);font-weight:600}.doc blockquote{margin:8px 0;padding:6px 12px;border-left:3px solid var(--accent);background:var(--accent-bg);color:var(--ink-2)}
+.doc code{background:var(--line-2);padding:0 4px;border-radius:4px}.doc a.mail{font-family:var(--mono);font-size:12px}
+.doc details.meta{margin:6px 0}.doc details.meta>summary{cursor:pointer;font-size:12px;color:var(--ink-3)}
+.fm{display:grid;grid-template-columns:110px 1fr;gap:4px 12px;font-size:13px;margin:6px 0 14px;padding:10px 14px;background:var(--line-2);border-radius:var(--radius)}
+.fm b{color:var(--ink-3);font-weight:500}
+.side{position:sticky;top:60px}
+.layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:16px}
+.toc a{display:block;padding:3px 8px;border-radius:5px;text-decoration:none;color:var(--ink-2);font-size:13px}.toc a:hover,.toc a.on{background:var(--accent-bg);color:var(--accent)}
+.toc .g{font-size:11.5px;color:var(--ink-3);margin:10px 8px 2px;font-weight:700}
+@media (max-width:900px){.layout{grid-template-columns:1fr}.side{position:static}}
+
+/* 테마 전환(JS) — localStorage 'sb-theme', 실패해도 화면은 OS 테마로 뜬다
+(()=>{try{const t=localStorage.getItem('sb-theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}})();
+function toggleTheme(){const r=document.documentElement;const cur=r.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+r.dataset.theme=cur==='dark'?'light':'dark';try{localStorage.setItem('sb-theme',r.dataset.theme)}catch(e){}}
+*/

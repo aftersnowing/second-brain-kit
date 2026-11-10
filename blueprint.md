@@ -153,7 +153,7 @@
 - `input_files/raw/meta/*.jsonl` (목록) · `body/*.jsonl` (본문) — API 응답 그대로. **수정 금지.**
 - 메일 본문 텍스트화 `textify.py`: HTML → 순수 텍스트, 인용 · 서명 제거본 `body_own`(본인 작성분 — 문체 · 카드 재료). 서명 잔존 약 2 % 가 알려져 있음.
 
-### 5.2 `results/brain.sqlite` 스키마
+### 5.2 `results/brain.sqlite` 스키마 (정확한 DDL 은 [`schema.sql`](schema.sql))
 
 | 테이블 | 주요 열 | 채우는 곳 |
 |---|---|---|
@@ -615,6 +615,7 @@ python3 scripts/note.py list --days 14 · find "<말>" · done note:YYYY-MM-DD-N
 
 - **git 은 로컬 전용** — 원격 없음(위키 · 산출물에 메일 요약이 있어 반출은 사람이 결정). 대상 `scripts` · `docs` · `wiki` · `outputs` · `evidence` · `notes` · 규칙 파일. **커밋은 경로 명시**(전체 추가 금지 — 다른 세션의 미커밋 작업이 섞임). 세션이 잊어도 백업이 매일 자동 스냅숏 커밋.
 - **백업** 매일 07:40 → 같은 PC 의 다른 볼륨: git 번들 · 원자료 · DB(큰 DB 는 7일마다) · MANIFEST. 판정 = 번들 verify · 원자료 파일별 크기 일치 · DB `quick_check`, 실패 시 OS 알림, 쓰기는 30초 간격 3회 재시도.
+- **저장소 밖 작업 환경**(스킬 · AI 메모리 · AI 도구 설정의 훅 등록 · systemd 단위 · 세션 훅 · 작업 대장)은 매일 `env/env_<날짜>.tar.gz` 로 묶어 14개 보관. 메모리는 정리로 지워지므로 덮어쓰기 한 벌이 아니라 날짜별. 링크는 링크로(켜진 타이머 목록이 곧 링크). git 에도 백업에도 없다가 점검에서 발견(11-10).
 - 백업하지 않는 것: 첨부 실물 · 첨부 본문 DB(재수집 가능 · 용량) · 자격증명.
 - **복구**: 번들 clone → 원자료 복사 → DB 복사(없으면 `build_db.py` → `load_bodies.py` → `refresh.py --no-collect`) → `cred.py set`. 복구 시험에서 메일 · 미결 · 벡터 수가 원본과 일치.
 - 한계: 같은 디스크 — WSL 손상 · 실수 삭제는 막지만 디스크 고장은 못 막음. 외부 매체는 별도 결정.
@@ -765,7 +766,7 @@ YYMMDD_<대상>_<요지>/
 | OS 연동 | PowerShell 토스트 · Windows 프로그램으로 열기 · Windows 경로 미러 · 백업 대상 볼륨 | 그 OS 의 알림 · 열기 · 백업 경로 |
 | 자동 작업 | systemd 사용자 단위 18개 | 단위 파일 복사 · 경로 수정 |
 | AI 세션 | 훅 스크립트 · 규칙 파일 · 자체 스킬 · 메모리 규약 | 스킬은 그대로, 훅은 경로만 |
-| 채점 정답지 | `docs/*_eval.json` · `glossary.yaml` | **새로 만든다** — 그 조직 메일로, 색인보다 먼저 |
+| 채점 정답지 | `docs/*_eval.json` · `glossary.yaml` | **새로 만든다** — 그 조직 메일로, 색인보다 먼저. 형식은 [`data_formats.md`](data_formats.md) |
 | 도메인 특화 화면 · 루프 | 성능 · 계약 화면 · 주간 루프 | 그 업종의 반복 보고부터 |
 
 ---

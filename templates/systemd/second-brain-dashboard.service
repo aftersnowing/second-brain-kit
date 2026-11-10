@@ -1,0 +1,17 @@
+[Unit]
+Description=second_brain 업무 비서 대시보드 — 정적 + 규제 위키 중계 (127.0.0.1:8795, 로컬 전용)
+Documentation=file://%h/second_brain/docs/plan_dashboard.md
+
+[Service]
+Type=simple
+# 페이지는 refresh 의 dashboard.py 가 매 회차 다시 쓴다. 서버는 파일을 건네주기만 한다(실측 RSS 약 21 MB).
+# 127.0.0.1 에만 묶는다 — 메일 요약이 들어 있어 이 PC 밖으로 내보내지 않는다(격리 규율).
+WorkingDirectory=%h/second_brain
+ExecStart=/usr/bin/python3 %h/second_brain/scripts/dashboard_server.py
+Restart=always
+RestartSec=5
+StandardOutput=null
+StandardError=append:%h/second_brain/results/dashboard_server.log
+
+[Install]
+WantedBy=default.target

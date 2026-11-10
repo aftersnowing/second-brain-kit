@@ -1,0 +1,38 @@
+[Unit]
+Description=second_brain 스캔 PDF OCR (CPU 50% 상한, 백그라운드)
+Documentation=file://%h/second_brain/scripts/ocr_attachments.py
+
+[Service]
+Type=simple
+WorkingDirectory=%h/second_brain
+
+# --- CPU 상한: 논리코어 12개 중 6개(=50%)를 cgroup 이 강제한다 ---
+# 워커 수만으로는 못 막는다. Paddle/OpenBLAS 가 워커마다 스레드를 더 띄우기 때문에
+# 예전에 4워커로 load avg 20 이 났다. 여기서는 몇 개를 띄우든 총합이 6 CPU 를 못 넘는다.
+CPUQuota=600%
+CPUWeight=20
+Nice=15
+IOSchedulingClass=idle
+
+# 워커 3 × 스레드 2 = 6 CPU. 워커당 RSS 1.2~2.1 GB 라 6워커는 스왑을 탄다(실측).
+Environment=OMP_NUM_THREADS=2
+Environment=OPENBLAS_NUM_THREADS=2
+Environment=MKL_NUM_THREADS=2
+Environment=FLAGS_use_mkldnn=0
+Environment=PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK=True
+
+# 메모리는 죽이지 않고 조인다 (MemoryMax 는 OOM kill 이라 중간 결과를 날린다)
+MemoryHigh=8G
+
+ExecStart=/usr/bin/python3 %h/second_brain/scripts/ocr_attachments.py --years 2 --workers 3
+
+StandardOutput=append:%h/second_brain/results/ocr.log
+StandardError=append:%h/second_brain/results/ocr.log
+
+# 죽으면 되살린다. targets() 가 이미 끝난 것을 빼므로 재시작은 이어하기가 된다.
+# 멈춤 감지: 진행이 없으면 systemd 가 되살린다 (묶음 커밋이라 이어하기가 된다)
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=default.target

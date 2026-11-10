@@ -1,0 +1,10 @@
+[Unit]
+Description=Orca 워크트리 정리 (병합 끝 · 미커밋 0 · 2일 무활동인 체크아웃 제거 + 병합 브랜치 삭제)
+Documentation=file://%h/second_brain/scripts/orca_worktree_gc.py
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/second_brain
+Environment=ORCA_CLI_COMMAND=orca-ide
+ExecStart=/usr/bin/python3 %h/second_brain/scripts/orca_worktree_gc.py
+Nice=15

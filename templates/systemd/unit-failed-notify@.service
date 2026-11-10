@@ -1,0 +1,6 @@
+[Unit]
+Description=OS notification and log line when %i fails
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 %h/second_brain/ops/notify_unit_failed.py  <- 알림 스크립트(OS 마다 새로 씀: 토스트 · notify-send · osascript) %i

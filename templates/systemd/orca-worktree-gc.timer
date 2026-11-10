@@ -1,0 +1,10 @@
+[Unit]
+Description=Orca 워크트리 정리 타이머 (매일 07:30 — 백업 07:40 · refresh 08:00 전)
+
+[Timer]
+OnCalendar=*-*-* 07:30:00
+Persistent=true
+RandomizedDelaySec=60
+
+[Install]
+WantedBy=timers.target

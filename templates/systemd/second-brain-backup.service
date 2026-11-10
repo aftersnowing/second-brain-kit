@@ -1,0 +1,10 @@
+[Unit]
+Description=second_brain 백업 (git 스냅숏·번들 + 원자료 rsync + DB 스냅숏 → C:\second_brain_backup)
+Documentation=file://%h/second_brain/scripts/backup.py
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/second_brain
+ExecStart=/usr/bin/python3 %h/second_brain/scripts/backup.py
+Nice=15
+IOSchedulingClass=idle

@@ -1,0 +1,13 @@
+[Unit]
+Description=second_brain 증분 갱신 (수집 → 재계산 → inbox/stale 대기열)
+Documentation=file://%h/second_brain/README.md
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/second_brain
+ExecStart=/usr/bin/python3 %h/second_brain/scripts/refresh.py --quiet
+# 종료코드 2 = '메일 세션 없음(OTP 필요)'. 고장이 아니라 사람 차례라는 뜻이므로 실패로 세지 않는다.
+SuccessExitStatus=0 2
+Nice=10
+IOSchedulingClass=idle

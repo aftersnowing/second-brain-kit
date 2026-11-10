@@ -1,0 +1,10 @@
+[Unit]
+Description=사람이 쓰는 보고 작업 폴더 미러 (<OS 쪽 폴더> → outputs/weekly, 판마다 git 커밋)
+Documentation=file://%h/second_brain/scripts/weekly_mirror.py
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/second_brain
+ExecStart=/usr/bin/python3 %h/second_brain/scripts/weekly_mirror.py
+Nice=15
+IOSchedulingClass=idle

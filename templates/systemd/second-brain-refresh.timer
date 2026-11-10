@@ -1,0 +1,10 @@
+[Unit]
+Description=second_brain 증분 갱신 타이머 (하루 6회)
+
+[Timer]
+OnCalendar=*-*-* 08,10,12,14,16,18:00:00
+Persistent=true
+RandomizedDelaySec=180
+
+[Install]
+WantedBy=timers.target

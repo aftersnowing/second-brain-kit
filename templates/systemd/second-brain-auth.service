@@ -1,0 +1,13 @@
+[Unit]
+Description=second_brain 메일 세션 데몬 (헤드리스 · OTP 는 사람이 http://127.0.0.1:8788 에서 넣는다)
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/second_brain
+ExecStart=/usr/bin/python3 %h/second_brain/scripts/auth_server.py
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=second_brain 백업 타이머 (매일 07:40 — 첫 refresh 08:00 전. 꺼져 있었으면 켜진 뒤 실행)
+
+[Timer]
+OnCalendar=*-*-* 07:40:00
+Persistent=true
+RandomizedDelaySec=120
+
+[Install]
+WantedBy=timers.target

@@ -59,5 +59,6 @@
 
 ## 내보낼 때마다
 
-1. 원 시스템의 고유명 사전(대상 · 거래처 · 사람 이름 · 도메인 · 메일 포인터)으로 이 폴더 전체를 검사 — 0건일 때만.
-2. 이 저장소에 복사 → 커밋 → 올림.
+1. 원 시스템에서 `python3 scripts/kit_leakscan.py` — 고유명 사전(대상 · 거래처 · 사람 이름 · 도메인)과
+   메일 포인터 · 주소 · 전화번호 꼴로 이 폴더 전체를 검사, 0건(rc 0)일 때만.
+2. `rsync -a --delete --exclude .git --exclude .gitignore --exclude .omc docs/portable/ <이 저장소>/` → 커밋 → 올림.
